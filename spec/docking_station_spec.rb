@@ -17,11 +17,9 @@ describe DockingStation do
   # end
 
   describe '#dock' do
-    it 'raises an error when more than one bike is docked' do
-      bike = Bike.new
-      second_bike = Bike.new
-      subject.dock(bike)
-      expect { subject.dock(second_bike) }.to raise_error 'Docking station at capacity'
+    it 'allows us to dock 20 bikes' do
+      20.times { subject.dock(Bike.new) }
+      expect { subject.dock(Bike.new) }.to raise_error 'Docking station at capacity'
     end
   end
 
